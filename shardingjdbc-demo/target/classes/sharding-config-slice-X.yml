@@ -1,0 +1,85 @@
+# shardingsphere水平分片配置
+dataSources:
+  server-order0:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://118.31.247.73:3310/db_order
+    username: root
+    password: 123456
+  server-order1:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://118.31.247.73:3311/db_order
+    username: root
+    password: 123456
+  server-user:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://118.31.247.73:3301/db_user
+    username: root
+    password: 123456
+
+rules:
+  - !SHARDING
+    tables:
+      t_order:
+        actualDataNodes: server-order${0..1}.t_order${0..1}
+        databaseStrategy:
+          standard:
+            shardingColumn: user_id
+            shardingAlgorithmName: database_inline
+        tableStrategy:
+          standard:
+            shardingColumn: order_no
+            shardingAlgorithmName: t_order_hashMod
+        keyGenerateStrategy:
+          column: id
+          keyGeneratorName: snowflake
+      t_order_item:
+        actualDataNodes: server-order${0..1}.t_order_item${0..1}
+        databaseStrategy:
+          standard:
+            shardingColumn: user_id
+            shardingAlgorithmName: database_inline
+        tableStrategy:
+          standard:
+            shardingColumn: order_no
+            shardingAlgorithmName: t_order_hashMod
+        keyGenerateStrategy:
+          column: id
+          keyGeneratorName: snowflake
+      t_dict:
+        actualDataNodes: server-order${0..1}.t_dict,server-user.t_dict
+
+    # user:
+    #   actualDataNodes: server-user.user
+    bindingTables:
+      - t_order,t_order_item
+
+    broadcastTables:
+      - t_dict
+
+    shardingAlgorithms:
+      database_inline:
+        type: INLINE
+        props:
+          algorithm-expression: server-order${user_id % 2}
+      t_order_inline:
+        type: INLINE
+        props:
+          algorithm-expression: t_order${id % 2}
+      t_order_mod:
+        type: MOD
+        props:
+          sharding-count: 2
+      t_order_hashMod:
+        type: HASH_MOD
+        props:
+          sharding-count: 2
+
+    keyGenerators:
+      snowflake:
+        type: SNOWFLAKE
+
+props:
+  sql-show: true

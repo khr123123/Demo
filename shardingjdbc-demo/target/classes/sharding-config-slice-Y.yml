@@ -1,0 +1,24 @@
+# shardingsphere垂直分片配置
+dataSources:
+  server-user:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://118.31.247.73:3301/db_user
+    username: root
+    password: 123456
+  server-order:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://118.31.247.73:3302/db_order
+    username: root
+    password: 123456
+
+rules:
+  - !SHARDING
+    tables:
+      t_order:
+        actualDataNodes: server-order.t_order
+      user:
+        actualDataNodes: server-user.user
+props:
+  sql-show: true
