@@ -1,0 +1,7 @@
+org\khr\canalspringbootstarter\core\CanalProperties.class
+org\khr\canalspringbootstarter\core\CanalHandler.class
+org\khr\canalspringbootstarter\core\CanalConfig.class
+org\khr\canalspringbootstarter\core\CanalListenerService$1.class
+org\khr\canalspringbootstarter\core\CanalListenerService.class
+org\khr\canalspringbootstarter\AutoConfiguration.class
+META-INF\spring-configuration-metadata.json

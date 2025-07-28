@@ -1,0 +1,39 @@
+{
+  "properties": [
+    {
+      "name": "canal.host",
+      "type": "java.lang.String",
+      "description": "Canal server IP 地址（默认 127.0.0.1）"
+    },
+    {
+      "name": "canal.port",
+      "type": "java.lang.Integer",
+      "description": "Canal server 端口（默认 11111）"
+    },
+    {
+      "name": "canal.destination",
+      "type": "java.lang.String",
+      "description": "Canal instance 名称（如 example）"
+    },
+    {
+      "name": "canal.username",
+      "type": "java.lang.String",
+      "description": "Canal 连接用户名（默认为 canal）"
+    },
+    {
+      "name": "canal.password",
+      "type": "java.lang.String",
+      "description": "Canal 连接密码"
+    },
+    {
+      "name": "canal.dbName",
+      "type": "java.lang.String",
+      "description": "数据名称"
+    },
+    {
+      "name": "canal.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否开启 Canal 监听（默认 false）"
+    }
+  ]
+}

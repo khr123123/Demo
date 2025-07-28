@@ -1,0 +1,61 @@
+{
+  "groups": [
+    {
+      "name": "canal",
+      "type": "org.khr.canalspringbootstarter.core.CanalProperties",
+      "sourceType": "org.khr.canalspringbootstarter.core.CanalProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "canal.db-name",
+      "type": "java.lang.String",
+      "sourceType": "org.khr.canalspringbootstarter.core.CanalProperties"
+    },
+    {
+      "name": "canal.dbName",
+      "type": "java.lang.String",
+      "description": "数据名称"
+    },
+    {
+      "name": "canal.destination",
+      "type": "java.lang.String",
+      "description": "Canal instance 名称（如 example）",
+      "sourceType": "org.khr.canalspringbootstarter.core.CanalProperties"
+    },
+    {
+      "name": "canal.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.khr.canalspringbootstarter.core.CanalProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "canal.host",
+      "type": "java.lang.String",
+      "description": "Canal server IP 地址（默认 127.0.0.1）",
+      "sourceType": "org.khr.canalspringbootstarter.core.CanalProperties"
+    },
+    {
+      "name": "canal.password",
+      "type": "java.lang.String",
+      "description": "Canal 连接密码",
+      "sourceType": "org.khr.canalspringbootstarter.core.CanalProperties"
+    },
+    {
+      "name": "canal.port",
+      "type": "java.lang.Integer",
+      "description": "Canal server 端口（默认 11111）",
+      "sourceType": "org.khr.canalspringbootstarter.core.CanalProperties"
+    },
+    {
+      "name": "canal.username",
+      "type": "java.lang.String",
+      "description": "Canal 连接用户名（默认为 canal）",
+      "sourceType": "org.khr.canalspringbootstarter.core.CanalProperties"
+    }
+  ],
+  "hints": [],
+  "ignored": {
+    "properties": []
+  }
+}
